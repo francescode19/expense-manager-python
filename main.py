@@ -20,14 +20,14 @@ class GestioneSpeseApp:
 
         self.root = tk.Tk() #finestra principale
         self.root.title("Gestione spese")
-        self.root.geometry("385x500")
+        self.root.geometry("306x500")
         self.root.configure(bg="lightblue")
         self.root.resizable(False, False)
 
         self._crea_widgets() #popola la finestra principale
 
 
-    # CREAZIONE WIDGET PRINCIPALI
+    # Creazione dei widget principali
 
     def _crea_widgets(self):
 
@@ -98,7 +98,7 @@ class GestioneSpeseApp:
             command=self.visualizza_grafico_spese
         ).grid(row=30, column=0, columnspan=4, pady=10, sticky="ew")
 
-    # SALVATAGGIO SPESA
+    # Salvataggio spesa
 
     def salva(self):
         nome = self.input_nome.get().strip()
@@ -140,9 +140,8 @@ class GestioneSpeseApp:
         salva_spesa_db(nome, importo, data, categoria)
         messagebox.showinfo("Conferma", "Dati salvati correttamente!")
 
-    # ---------------------------------------------------------
-    # VISUALIZZA SPESE
-    # ---------------------------------------------------------
+    # Visualizza spese
+
     def visualizza_spese(self):
         finestra = tk.Toplevel(self.root)
         finestra.title("Spese memorizzate")
@@ -184,9 +183,8 @@ class GestioneSpeseApp:
             command=elimina
         ).pack(pady=10)
 
-    # ---------------------------------------------------------
-    # VISUALIZZA IMPORTO TOTALE
-    # ---------------------------------------------------------
+    # Visualizza importo totale
+
     def visualizza_importo(self):
         totale = visualizza_importo_db()
         if totale is None:
@@ -194,7 +192,7 @@ class GestioneSpeseApp:
 
         finestra = tk.Toplevel(self.root)
         finestra.title("Totale delle tue spese")
-        finestra.geometry("273x160")
+        finestra.geometry("308x160")
         finestra.configure(bg="lightblue")
         finestra.resizable(False, False)
 
@@ -212,9 +210,8 @@ class GestioneSpeseApp:
             command=finestra.destroy
         ).grid(row=4, column=0, pady=80, padx=90, sticky="nsew")
 
-    # ---------------------------------------------------------
-    # GRAFICO SPESE
-    # ---------------------------------------------------------
+    # Grafico spese
+
     def visualizza_grafico_spese(self):
         dati = visualizza_grafico_spese_db()
 
@@ -233,9 +230,8 @@ class GestioneSpeseApp:
         plt.tight_layout()
         plt.show()
 
-    # ---------------------------------------------------------
-    # AVVIO APP
-    # ---------------------------------------------------------
+    # Avvio applicazione
+
     def run(self):
         self.root.mainloop()
 

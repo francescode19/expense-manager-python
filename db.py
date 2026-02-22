@@ -1,7 +1,9 @@
 import sqlite3
 
+# Nome del file databaset SQlite utilizzato
 NOME_DB = "gestione_spese.db"
 
+# Crea il database e la tabella 'spese' se non esistono, chiamata all'avvio dell'applicazione
 def inizializza_db():
     conn = sqlite3.connect(NOME_DB)
     cursor = conn.cursor()
@@ -17,6 +19,7 @@ def inizializza_db():
     conn.commit()
     conn.close()
 
+# Inserisce una nuova spesa nel database
 def salva_spesa_db(nome_art, importo_art, data_art, categoria_art):
     conn = sqlite3.connect(NOME_DB)
     cursor = conn.cursor()
@@ -27,6 +30,7 @@ def salva_spesa_db(nome_art, importo_art, data_art, categoria_art):
     conn.commit()
     conn.close()
 
+# Restituisce tutte le spese salvate nel database
 def visualizza_spese_db():
     conn = sqlite3.connect(NOME_DB)
     cursor = conn.cursor()
@@ -35,6 +39,7 @@ def visualizza_spese_db():
     conn.close()
     return dati
 
+# Elimina una spesa tramite il relativo ID
 def elimina_spesa_db(id):
     conn = sqlite3.connect(NOME_DB)
     cursor = conn.cursor()
@@ -42,6 +47,7 @@ def elimina_spesa_db(id):
     conn.commit()
     conn.close()
 
+# Calcola il totale delle spese salvate e ritorna l'importo (somma totale)
 def visualizza_importo_db():
     conn = sqlite3.connect(NOME_DB)
     cursor = conn.cursor()
@@ -50,6 +56,7 @@ def visualizza_importo_db():
     conn.close()
     return dati
 
+# Restituisce le spese per mese-anno
 def visualizza_grafico_spese_db():
     conn = sqlite3.connect("gestione_spese.db")
     cursor = conn.cursor()
