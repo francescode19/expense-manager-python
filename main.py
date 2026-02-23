@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import matplotlib.pyplot as plt
 from datetime import datetime
+import csv
+import os
 
 from db import (
     inizializza_db,
@@ -97,6 +99,14 @@ class GestioneSpeseApp:
             fg="white",
             command=self.visualizza_grafico_spese
         ).grid(row=30, column=0, columnspan=4, pady=10, sticky="ew")
+
+        tk.Button(
+            self.root,
+            text="Esporta spese in formato CSV",
+            bg="blue",
+            fg="white",
+            command=self.esporta_csv
+        ).grid(row=35, column=0, columnspan=4, pady=10, sticky="ew")
 
     # Salvataggio spesa
 
@@ -229,6 +239,41 @@ class GestioneSpeseApp:
         plt.grid(axis="y", linestyle="--", alpha=0.7)
         plt.tight_layout()
         plt.show()
+
+    # Esporta spese in CSV
+
+    def esporta_csv(self):
+        spese = visualizza_spese_db()
+
+        with open('spese.csv', 'w', newline='') as csvfile:
+            colonne = ['ID', 'NOME ARTICOLO', 'IMPORTO', 'DATA', 'CATEGORIA']
+            writer = csv.writer(csvfile)
+            writer.writerow(colonne)
+            writer.writerows(spese)
+
+        # Controllo esistenza file
+        file_esiste = os.path.exists('spese.csv')
+
+        # Controllo che il file non sia vuoto
+        if os.path.getsize('spese.csv') > 0:
+            file_non_vuoto = True
+        else:
+            file_non_vuoto = False
+
+        # Numero di spese esportate
+        numero_spese = len(spese)
+
+        if file_esiste and file_non_vuoto:
+            messagebox.showinfo(
+                "Esportazione completata",
+                f"Il file CSV è stato creato correttamente.\n"
+                f"Sono state esportate {numero_spese} spese."
+            )
+        else:
+            messagebox.showerror(
+                "Errore",
+                "Si è verificato un problema durante l'esportazione del file CSV."
+            )
 
     # Avvio applicazione
 

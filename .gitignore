@@ -9,6 +9,9 @@ venv/
 # Database locali
 gestione_spese.db
 
+# File CSV
+*.csv
+
 # IDE / editor files
 .vscode/
 .idea/
