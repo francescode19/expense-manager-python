@@ -48,6 +48,17 @@ A simple desktop application built with Python and Tkinter. It allows users to c
 - Export all expenses to a CSV file  
 - Includes ID, item name, amount, date, and category  
 
+## Screenshots:
+
+### Main Window
+![Main Window](images/home.png)
+
+### Monthly Expense Chart
+![Expense Chart](images/chart.png)
+
+### Export CSV
+![Export CSV](images/csv.png)
+
 ## Future Improvements:
 
 - UI enhancements: improve layout, spacing, and overall design  
