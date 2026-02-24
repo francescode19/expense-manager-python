@@ -50,16 +50,16 @@ A simple desktop application built with Python and Tkinter. It allows users to c
 
 ## Screenshots:
 
-### Main Window
-![Main Window](images/home.png)
+### Main window
+![Main window](images/home.png)
 
-### Monthly Expense Chart
-![Expense Chart](images/chart.png)
+### Monthly expense chart
+![Expense chart](images/chart.png)
 
 ### Export CSV
 ![Export CSV](images/csv.png)
 
-## Future Improvements:
+## Future improvements:
 
 - UI enhancements: improve layout, spacing, and overall design  
 - Custom categories: allow users to create and manage their own categories  
