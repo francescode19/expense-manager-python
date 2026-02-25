@@ -264,11 +264,18 @@ class GestioneSpeseApp:
         numero_spese = len(spese)
 
         if file_esiste and file_non_vuoto:
-            messagebox.showinfo(
-                "Esportazione completata",
-                f"Il file CSV è stato creato correttamente.\n"
-                f"Sono state esportate {numero_spese} spese."
-            )
+            if numero_spese == 1:
+                messagebox.showinfo(
+                    "Esportazione completata",
+                    f"Il file CSV è stato creato correttamente.\n"
+                    f"È stata esportata {numero_spese} spesa."
+                )
+            else:
+                messagebox.showinfo(
+                    "Esportazione completata",
+                    f"Il file CSV è stato creato correttamente.\n"
+                    f"Sono state esportate {numero_spese} spese."
+                )
         else:
             messagebox.showerror(
                 "Errore",
